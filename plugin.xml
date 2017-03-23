@@ -28,6 +28,7 @@
             <uses-permission android:name="android.permission.VIBRATE" />
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+			<preference name="android-minSdkVersion" value="19" />
         </config-file>
 		
 		<js-module src="www/android/alien_rfid.js" name="alien">
