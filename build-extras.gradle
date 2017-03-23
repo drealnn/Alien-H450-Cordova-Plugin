@@ -8,8 +8,8 @@ ext.postBuildExtras = {
 }
 android {
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 22
+        minSdkVersion 19
+        targetSdkVersion 23
     }
 
    packagingOptions {
