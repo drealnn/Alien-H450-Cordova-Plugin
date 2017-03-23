@@ -60,7 +60,7 @@ public class Rfid extends CordovaPlugin {
             try {
 			// initialize RFID interface and obtain a global RFID Reader instance
 				mReader = RFID.open();
-				callbackContext.sucess("successfully initialized RFID device");
+				callbackContext.success("successfully initialized RFID device");
 			}
 			catch(ReaderException e) {
 				Log.e(TAG, "RFID init failed: " + e);
@@ -73,7 +73,7 @@ public class Rfid extends CordovaPlugin {
 			if (mReader != null){
 				mReader.close();
 			}
-			callbackContext.sucess("successfully closed RFID device");
+			callbackContext.success("successfully closed RFID device");
 			
             return true;
 		}
@@ -99,10 +99,8 @@ public class Rfid extends CordovaPlugin {
 				mReader.setPower(args.getInt(0));
 				callbackContext.success("successfully set power level");
 			} catch (ReaderException e) {
-				Log.e(TAG, String.format(
-						"ERROR. saveOption() - Failed to set power level [%s]",
-						e.getCode()), e);
-				callbackContext.error("failed to set power level");
+				Log.e(TAG, "ERROR: " + e);
+				callbackContext.error("ERROR: " + e);
 			}
 
 			Log.d(TAG, "--set power level");
@@ -124,7 +122,7 @@ public class Rfid extends CordovaPlugin {
 					@Override
 					public void onTagRead(Tag tag) {
 						Tag newtag = tag;
-						String str = "{\'tag\':\'" + newtag.getEPC + "\' , \'rssi\': \'" + newtag.getRSSI + "\'}";
+						String str = "{\'tag\':\'" + newtag.getEPC() + "\' , \'rssi\': \'" + newtag.getRSSI() + "\'}";
 						PluginResult result = new PluginResult(PluginResult.Status.OK, new JSONObject(str));
 						result.setKeepCallback(true);
 						this.onReaderReadTag_callback.sendPluginResult(result);
@@ -133,7 +131,8 @@ public class Rfid extends CordovaPlugin {
 				});
 			}
 			catch (ReaderException e) {
-				Toast.makeText(this, "ERROR: " + e, Toast.LENGTH_LONG).show();
+				Log.e(TAG, "ERROR: " + e);
+				callbackContext.error("ERROR: " + e);
 			}
 			
 			return true;
@@ -147,14 +146,14 @@ public class Rfid extends CordovaPlugin {
 			}
 			try {
 				// Read a single tag and add it to the list
-				RFIDResult result = mReader.read();
-				if (!result.isSuccess()) {
+				RFIDResult readResult = mReader.read();
+				if (!readResult.isSuccess()) {
 					callbackContext.error("No tags found");
 					Log.e(TAG, "No tags found");
 					return true;
 				}
-				Tag newtag = ((Tag)result.getData());
-				String str = "{\'tag\':\'" + newtag.getEPC + "\' , \'rssi\': \'" + newtag.getRSSI + "\'}";
+				Tag newtag = ((Tag)readResult.getData());
+				String str = "{\'tag\':\'" + newtag.getEPC() + "\' , \'rssi\': \'" + String.valueOf(newtag.getRSSI()) + "\'}";
 				callbackContext.success(new JSONObject(str));
 			}
 			catch (ReaderException e) {
@@ -202,7 +201,7 @@ public class Rfid extends CordovaPlugin {
 						int stringLength = toWrite.length();
 						for (i = 0; i < stringLength; i++){
 							int asciiChar =  (int) toWrite.charAt(i);
-							data += ""+Integer.valueOf(asciiChar, 16);
+							data += ""+String.valueOf(Integer.valueOf(asciiChar, 16));
 						}
 						break;
 					default:
@@ -229,10 +228,10 @@ public class Rfid extends CordovaPlugin {
 		}
 		else if (action.equalsIgnoreCase("is_running")){
 			if (mReader!=null){
-				callbackContext.sucess(mReader.isRunning());
+				callbackContext.success(mReader.isRunning());
 			}
 			else{
-				callbackContext.sucess(false);
+				callbackContext.success(false);
 			}
 			return true;
 		}

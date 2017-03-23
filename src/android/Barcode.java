@@ -66,7 +66,7 @@ public class Barcode extends CordovaPlugin {
 			}
 			else {
 				mScanner.start(new BarcodeCallback(){
-					@override
+					@Override
 					public void onBarcodeRead(String barcode){
 						PluginResult result = new PluginResult(PluginResult.Status.OK, barcode);
 						result.setKeepCallback(true);
@@ -93,7 +93,6 @@ public class Barcode extends CordovaPlugin {
 		}
 		return false;
 	}
-
 	@Override
 	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
 		super.initialize(cordova, webView);
