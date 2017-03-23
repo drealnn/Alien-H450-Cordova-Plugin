@@ -202,7 +202,7 @@ public class Rfid extends CordovaPlugin {
 						int stringLength = toWrite.length();
 						for (i = 0; i < stringLength; i++){
 							int asciiChar =  Character.getNumericValue(toWrite.charAt(i));
-							data += ""+Integer.valueOf(asciiChar, 16);
+							data += Integer.toString(asciiChar, 16);
 						}
 						break;
 					default:
