@@ -10,15 +10,15 @@
     <platform name="android">
         <config-file target="config.xml" parent="/*">
 			<feature name="Rfid">
-                <param name="android-package" value="com.alien.app.myRfid.Rfid"/>
+                <param name="android-package" value="com.alienPlugin.app.myRfid.Rfid"/>
             </feature>
 			
             <feature name="Alien">
-                <param name="android-package" value="com.alien.app.aliengen.Alien"/>
+                <param name="android-package" value="com.alienPlugin.app.aliengen.Alien"/>
             </feature>
 			
 			<feature name="Barcode">
-                <param name="android-package" value="com.alien.app.mybarcode.Barcode"/>
+                <param name="android-package" value="com.alienPlugin.app.mybarcode.Barcode"/>
             </feature>
 			
         </config-file>
@@ -42,9 +42,9 @@
             <clobbers target="alien.general" />
         </js-module>
 		
-		<source-file src="src/android/Rfid.java" target-dir="src/com/alien/app/myRfid" />
-	    <source-file src="src/android/Barcode.java" target-dir="src/com/alien/app/mybarcode" />
-        <source-file src="src/android/Alien.java" target-dir="src/com/alien/app/aliengen" />
+		<source-file src="src/android/Rfid.java" target-dir="src/com/alienPlugin/app/myRfid" />
+	    <source-file src="src/android/Barcode.java" target-dir="src/com/alienPlugin/app/mybarcode" />
+        <source-file src="src/android/Alien.java" target-dir="src/com/alienPlugin/app/aliengen" />
 		
 		<framework src="src/android/libs/alienapi.gradle" custom="true" type="gradleReference" />
         <!--<source-file src="src/android/libs/build-extras.gradle" target-dir="src/.." />-->

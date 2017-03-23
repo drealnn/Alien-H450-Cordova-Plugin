@@ -1,4 +1,4 @@
-package com.alien.app.aliengen;
+package com.alienPlugin.app.aliengen;
 
 import android.media.AudioManager;
 import android.media.SoundPool;

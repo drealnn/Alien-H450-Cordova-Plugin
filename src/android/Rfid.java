@@ -1,4 +1,4 @@
-package com.alien.app.myRfid;
+package com.alienPlugin.app.myRfid;
 
 import android.media.AudioManager;
 import android.media.SoundPool;

@@ -1,4 +1,4 @@
-package com.alien.app.mybarcode;
+package com.alienPlugin.app.mybarcode;
 
 import android.media.AudioManager;
 import android.media.SoundPool;
