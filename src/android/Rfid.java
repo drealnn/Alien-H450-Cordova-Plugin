@@ -124,9 +124,15 @@ public class Rfid extends CordovaPlugin {
 					public void onTagRead(Tag tag) {
 						Tag newtag = tag;
 						String str = "{\'tag\':\'" + newtag.getEPC() + "\' , \'rssi\': \'" + newtag.getRSSI() + "\'}";
-						PluginResult result = new PluginResult(PluginResult.Status.OK, new JSONObject(str));
-						result.setKeepCallback(true);
-						that.onReaderReadTag_callback.sendPluginResult(result);
+						try{
+							PluginResult result = new PluginResult(PluginResult.Status.OK, new JSONObject(str));
+							result.setKeepCallback(true);
+							that.onReaderReadTag_callback.sendPluginResult(result);
+						}catch(JSONException e){
+							PluginResult result = new PluginResult(PluginResult.Status.ERROR, "JSON Exception");
+							result.setKeepCallback(true);
+							that.onReaderReadTag_callback.sendPluginResult(result);
+						}
 						return;
 					}
 				});
@@ -158,6 +164,11 @@ public class Rfid extends CordovaPlugin {
 				callbackContext.success(new JSONObject(str));
 			}
 			catch (ReaderException e) {
+				Log.e(TAG, "ERROR: " + e);
+				callbackContext.error("ERROR: " + e);
+			}
+			}catch(JSONException e)
+			{
 				Log.e(TAG, "ERROR: " + e);
 				callbackContext.error("ERROR: " + e);
 			}
