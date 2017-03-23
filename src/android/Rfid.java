@@ -167,7 +167,7 @@ public class Rfid extends CordovaPlugin {
 				Log.e(TAG, "ERROR: " + e);
 				callbackContext.error("ERROR: " + e);
 			}
-			}catch(JSONException e)
+			catch(JSONException e)
 			{
 				Log.e(TAG, "ERROR: " + e);
 				callbackContext.error("ERROR: " + e);
