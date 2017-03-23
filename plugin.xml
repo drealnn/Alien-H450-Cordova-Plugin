@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+        id="simplicity-alien-barcode-rfid" version="0.1.0">
+    <name>Device</name>
+    <description>Cordova Device Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,device</keywords>
+    
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+			<feature name="Rfid">
+                <param name="android-package" value="com.alien.app.myRfid.Rfid"/>
+            </feature>
+			
+            <feature name="alien">
+                <param name="android-package" value="com.alien.app.aliengen.alien"/>
+            </feature>
+			
+			<feature name="Barcode">
+                <param name="android-package" value="com.alien.app.mybarcode.Barcode"/>
+            </feature>
+			
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WAKE_LOCK"/>
+            <uses-permission android:name="android.permission.VIBRATE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        </config-file>
+		
+		<js-module src="www/android/alien_rfid.js" name="alien">
+            <clobbers target="alien.rfid" />
+        </js-module>
+
+	    <js-module src="www/android/alien_barcode.js" name="alien-barcode">
+            <clobbers target="alien.barcode" />
+        </js-module>
+		
+        <js-module src="www/android/alien.js" name="alien-params">
+            <clobbers target="alien.general" />
+        </js-module>
+		
+		<source-file src="src/android/Rfid.java" target-dir="src/com/alien/app/myRfid" />
+	    <source-file src="src/android/Barcode.java" target-dir="src/com/alien/app/mybarcode" />
+        <source-file src="src/android/Alien.java" target-dir="src/com/alien/app/aliengen" />
+		
+		<framework src="src/android/libs/alienapi.gradle" custom="true" type="gradleReference" />
+        <source-file src="src/android/libs/build-extras.gradle" target-dir="src/.." />
+		<resource-file src="src/android/libs/alienapi.aar" target="libs/alienapi.aar" />
+      
+
+
+    </platform>
+
+</plugin>
+
