@@ -39,6 +39,7 @@ public class Barcode extends CordovaPlugin {
 	private static final String TAG = "Alien Native"; 
 	private Vibrator mVibrator;
 	private CallbackContext onScan_callback = null;
+	BarcodeReader mScanner = null;
 	//Context context=this.cordova.getActivity().getApplicationContext();
 
 	@Override
