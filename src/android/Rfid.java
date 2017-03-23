@@ -193,16 +193,16 @@ public class Rfid extends CordovaPlugin {
 				String data = "";
 				String format = args.getString(0).toLowerCase();
 				String toWrite = args.getString(1);
-				switch format{
+				switch (format){
 					case("hex"):
 						data = toWrite;
 						break;
-					case("ascii")
+					case("ascii"):
 						int i = 0;
 						int stringLength = toWrite.length();
 						for (i = 0; i < stringLength; i++){
 							int asciiChar =  (int) toWrite.charAt(i);
-							data += ''+Integer.valueOf(asciiChar, 16);
+							data += ""+Integer.valueOf(asciiChar, 16);
 						}
 						break;
 					default:
