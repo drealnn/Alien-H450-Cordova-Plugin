@@ -118,6 +118,7 @@ public class Rfid extends CordovaPlugin {
 			try {
 				// start continuous inventory
 				// create a callback to receive tag data
+				final Rfid that = this;
 				mReader.inventory(new RFIDCallback() {
 					@Override
 					public void onTagRead(Tag tag) {
@@ -125,7 +126,7 @@ public class Rfid extends CordovaPlugin {
 						String str = "{\'tag\':\'" + newtag.getEPC() + "\' , \'rssi\': \'" + newtag.getRSSI() + "\'}";
 						PluginResult result = new PluginResult(PluginResult.Status.OK, new JSONObject(str));
 						result.setKeepCallback(true);
-						this.onReaderReadTag_callback.sendPluginResult(result);
+						that.onReaderReadTag_callback.sendPluginResult(result);
 						return;
 					}
 				});
@@ -200,8 +201,8 @@ public class Rfid extends CordovaPlugin {
 						int i = 0;
 						int stringLength = toWrite.length();
 						for (i = 0; i < stringLength; i++){
-							int asciiChar =  (int) toWrite.charAt(i);
-							data += ""+String.valueOf(Integer.valueOf(asciiChar, 16));
+							int asciiChar =  Character.getNumericValue(toWrite.charAt(i));
+							data += ""+Integer.valueOf(asciiChar, 16);
 						}
 						break;
 					default:
@@ -228,10 +229,10 @@ public class Rfid extends CordovaPlugin {
 		}
 		else if (action.equalsIgnoreCase("is_running")){
 			if (mReader!=null){
-				callbackContext.success(mReader.isRunning());
+				callbackContext.success(String.valueOf(mReader.isRunning()));
 			}
 			else{
-				callbackContext.success(false);
+				callbackContext.success(String.valueOf(false));
 			}
 			return true;
 		}

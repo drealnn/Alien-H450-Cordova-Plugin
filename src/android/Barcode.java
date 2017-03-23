@@ -53,7 +53,7 @@ public class Barcode extends CordovaPlugin {
 			}
 			else {
 				Log.i(TAG, "++Checking if scanner is running");
-				callbackContext.success(mScanner.isRunning());
+				callbackContext.success(String.valueOf(mScanner.isRunning()));
 				Log.i(TAG, "--Checking if scanner is running");
 			}
 			return true;
@@ -65,12 +65,13 @@ public class Barcode extends CordovaPlugin {
 				return true;
 			}
 			else {
+				final Barcode that = this;
 				mScanner.start(new BarcodeCallback(){
 					@Override
 					public void onBarcodeRead(String barcode){
 						PluginResult result = new PluginResult(PluginResult.Status.OK, barcode);
 						result.setKeepCallback(true);
-						this.onScan_callback.sendPluginResult(result);
+						that.onScan_callback.sendPluginResult(result);
 						return;
 					}
 				});
