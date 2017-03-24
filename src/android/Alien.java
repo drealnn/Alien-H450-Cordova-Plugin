@@ -59,9 +59,11 @@ public class Alien extends CordovaPlugin {
         }
 		else if(action.equalsIgnoreCase("onTriggerDown")){
 			this.triggerup_callback = callbackContext;
+			return true;
 		}
 		else if(action.equalsIgnoreCase("onTriggerUp")){
-			this.triggerdown_callback = callbackContext; 
+			this.triggerdown_callback = callbackContext;
+			return true;
 		}
 		else if (action.equalsIgnoreCase("getTriggerKeyCode")){
 			callbackContext.success(KeyCode.ALR_H450.SCAN);
@@ -79,7 +81,7 @@ public class Alien extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
 
-        Log.i(TAG, "ATID general Initialized");
+        Log.i(TAG, "Alien general Initialized");
         //Context ctx = cordova.getActivity().getApplicationContext();
         /*mSound = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 
@@ -90,16 +92,22 @@ public class Alien extends CordovaPlugin {
         mSuccess = mSound.load(ctx, successResource, 1);
         mFail = mSound.load(ctx, failResource, 1);
         mBeep = mSound.load(ctx, beepResource, 1);*/
-
-        this.currentView = webView.getView();
-        this.currentView.setOnKeyListener(
-                new View.OnKeyListener(){
-                    @Override
-                    public boolean onKey(View view, int keyCode, KeyEvent event){
-                        return doKey(view, keyCode, event);
-                    }
-                }
-        );
+		
+		try {
+			Log.i(TAG, "getting view from webview");
+			this.currentView = webView.getView();
+			Log.i(TAG, "setting the views on key listener");
+			this.currentView.setOnKeyListener(
+					new View.OnKeyListener(){
+						@Override
+						public boolean onKey(View view, int keyCode, KeyEvent event){
+							return doKey(view, keyCode, event);
+						}
+					}
+			);
+		} catch(Exception e){
+			Log.e(TAG, "Error: "+e);
+		}
 
     }
 
