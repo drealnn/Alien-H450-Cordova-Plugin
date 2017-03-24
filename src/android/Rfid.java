@@ -204,6 +204,7 @@ public class Rfid extends CordovaPlugin {
 				String data = "";
 				String format = args.getString(0).toLowerCase();
 				String toWrite = args.getString(1);
+				int offset = args.getInt(2) != null ? args.getInt(2) : 2;
 				switch (format){
 					case("hex"):
 						data = toWrite;
@@ -221,8 +222,12 @@ public class Rfid extends CordovaPlugin {
 						break;
 				}
 				
-				if (data != null)
-					mReader.write(Bank.EPC, 2, data);
+				if (data != null){
+					Log.i(TAG,"Writing "+data+" to EPC with offset "+String.valueOf(offset)+"..."");
+					mReader.write(Bank.EPC, offset, data);
+					Log.i(TAG, "Successfully Read "+data+" to EPC with offset "+String.valueOf(offset));
+					callbackContext.success(data);
+				}
 				else {
 					callbackContext.error("Improper format to write function");
 					Log.e(TAG, "Improper format to write function");
