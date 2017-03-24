@@ -204,7 +204,7 @@ public class Rfid extends CordovaPlugin {
 				String data = "";
 				String format = args.getString(0).toLowerCase();
 				String toWrite = args.getString(1);
-				int offset = args.getInt(2) != null ? args.getInt(2) : 2;
+				int offset = args.getInt(2) >= 0 ? args.getInt(2) : 2;
 				switch (format){
 					case("hex"):
 						data = toWrite;
