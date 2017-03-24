@@ -179,7 +179,7 @@ public class Rfid extends CordovaPlugin {
 		{
 			if (mReader == null || !mReader.isRunning()){
 				Log.e(TAG, "Reader isn't instantiated or isn't running");
-				callbackContext.error("Reader isn't instantiated or isn't running");
+				callbackContext.success("Reader isn't instantiated or isn't running");
 			}
 			else {
 				try {
