@@ -223,7 +223,7 @@ public class Rfid extends CordovaPlugin {
 				}
 				
 				if (data != null){
-					Log.i(TAG,"Writing "+data+" to EPC with offset "+String.valueOf(offset)+"..."");
+					Log.i(TAG,"Writing "+data+" to EPC with offset "+String.valueOf(offset)+"...");
 					mReader.write(Bank.EPC, offset, data);
 					Log.i(TAG, "Successfully Read "+data+" to EPC with offset "+String.valueOf(offset));
 					callbackContext.success(data);
