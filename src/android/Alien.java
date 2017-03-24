@@ -154,8 +154,6 @@ public class Alien extends CordovaPlugin {
 					this.triggerdown_callback.sendPluginResult(triggerResult);
 				}
 			}
-			
-            return true;
         } catch(Exception e)
         {
             e.printStackTrace();
@@ -167,8 +165,9 @@ public class Alien extends CordovaPlugin {
 			if (this.triggerdown_callback != null)
 				this.triggerdown_callback.sendPluginResult(result);
 			
-            return false;
+           
         }
+		return false;
     }
 
     private boolean KeyUp(int keyCode, KeyEvent event){
@@ -197,7 +196,7 @@ public class Alien extends CordovaPlugin {
 				}
 			}
 			
-            return true;
+   
         } catch(Exception e)
         {
             e.printStackTrace();
@@ -209,8 +208,9 @@ public class Alien extends CordovaPlugin {
 			if (this.triggerup_callback != null)
 				this.triggerup_callback.sendPluginResult(result);
             
-			return false;
         }
+		
+		return false;
 
     }
 
