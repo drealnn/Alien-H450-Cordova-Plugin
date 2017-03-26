@@ -98,9 +98,18 @@ public class Barcode extends CordovaPlugin {
 	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
 		super.initialize(cordova, webView);
 		Context ctx = cordova.getActivity().getApplicationContext();
-		if ((this.mScanner = new BarcodeReader(ctx)) == null) {
+		
+		try {
+		this.mScanner = new BarcodeReader(ctx);
+		
+		if (this.mScanner == null) {
 				Log.e(TAG, "Failure to find scanning device. Aborting...");
 				return;
+		}
+		}catch(Exception e){
+			Log.e(TAG, "ERROR: "+e);
+			e.printStackTrace();
+			return;
 		}
 
 		Log.i(TAG, "Scanning device initialized");
