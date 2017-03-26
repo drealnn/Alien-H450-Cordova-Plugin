@@ -58,11 +58,11 @@ public class Alien extends CordovaPlugin {
             return true;
         }
 		else if(action.equalsIgnoreCase("onTriggerDown")){
-			this.triggerup_callback = callbackContext;
+			this.triggerdown_callback = callbackContext;
 			return true;
 		}
 		else if(action.equalsIgnoreCase("onTriggerUp")){
-			this.triggerdown_callback = callbackContext;
+			this.triggerup_callback = callbackContext;
 			return true;
 		}
 		else if (action.equalsIgnoreCase("getTriggerKeyCode")){
