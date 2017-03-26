@@ -97,14 +97,14 @@ public class Alien extends CordovaPlugin {
 			Log.i(TAG, "getting view from webview");
 			this.currentView = webView.getView();
 			Log.i(TAG, "setting the views on key listener");
-			this.currentView.setOnKeyListener(
-					new View.OnKeyListener(){
-						@Override
-						public boolean onKey(View view, int keyCode, KeyEvent event){
-							return doKey(view, keyCode, event);
-						}
-					}
-			);
+			// this.currentView.setOnKeyListener(
+					// new View.OnKeyListener(){
+						// @Override
+						// public boolean onKey(View view, int keyCode, KeyEvent event){
+							// return doKey(view, keyCode, event);
+						// }
+					// }
+			// );
 		} catch(Exception e){
 			Log.e(TAG, "Error: "+e);
 		}
