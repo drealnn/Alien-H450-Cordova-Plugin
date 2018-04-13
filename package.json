@@ -1,0 +1,27 @@
+{
+  "name": "alien-barcode-rfid",
+  "version": "0.0.1",
+  "description": "Cordova Device Plugin",
+  "cordova": {
+    "id": "simplicity-alien-barcode-rfid",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drealnn/Alien-H450-Cordova-Plugin.git"
+  },
+  "keywords": [
+    "cordova",
+    "device",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Daniel Sledd",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/drealnn/Alien-H450-Cordova-Plugin/issues"
+  },
+  "homepage": "https://github.com/drealnn/Alien-H450-Cordova-Plugin#readme"
+}
