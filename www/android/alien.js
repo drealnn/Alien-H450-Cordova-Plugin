@@ -17,7 +17,7 @@ module.exports =  {
 	},
 	getTriggerKeyCode : function(successCallback, errorCallback){
 		exec(successCallback, errorCallback, "Alien", 'getTriggerKeyCode', []);
-	}
+	},
 	
 	playSound : function(soundName, successCallback, errorCallback){
 		exec(successCallback, errorCallback, "Alien", 'playSound', [soundName]);

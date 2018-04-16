@@ -22,6 +22,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.alien.common.KeyCode;
+import com.example.simple.ALR_H40_CordovaWebViewImpl;
+import com.example.simple.CustomWebViewKeyListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,7 +86,7 @@ public class Alien extends CordovaPlugin {
         Log.i(TAG, "Alien general Initialized");
         //Context ctx = cordova.getActivity().getApplicationContext();
         mSound = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-
+        Context ctx  = cordova.getContext();
         int successResource = ctx.getResources().getIdentifier("success", "raw", ctx.getPackageName());
         int failResource =  ctx.getResources().getIdentifier("fail", "raw", ctx.getPackageName());
         int beepResource = ctx.getResources().getIdentifier("beep", "raw", ctx.getPackageName());
