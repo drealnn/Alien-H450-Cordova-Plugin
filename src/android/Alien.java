@@ -77,13 +77,13 @@ public class Alien extends CordovaPlugin {
         return false;
     }
 
-    @Override
+ @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
 
         Log.i(TAG, "Alien general Initialized");
         //Context ctx = cordova.getActivity().getApplicationContext();
-        /*mSound = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        mSound = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 
         int successResource = ctx.getResources().getIdentifier("success", "raw", ctx.getPackageName());
         int failResource =  ctx.getResources().getIdentifier("fail", "raw", ctx.getPackageName());
@@ -91,21 +91,32 @@ public class Alien extends CordovaPlugin {
 
         mSuccess = mSound.load(ctx, successResource, 1);
         mFail = mSound.load(ctx, failResource, 1);
-        mBeep = mSound.load(ctx, beepResource, 1);*/
+        mBeep = mSound.load(ctx, beepResource, 1);
 		
 		try {
 			Log.i(TAG, "getting view from webview");
-			this.currentView = webView.getView();
-			this.currentView.setOnKeyListener(
-					new View.OnKeyListener(){
-						@Override
-						public boolean onKey(View view, int keyCode, KeyEvent event){
-							//boolean val = super.onKey(view, keyCode, event);
-							Log.i(TAG, "Calling the onkey event");
-							return doKey(view, keyCode, event);
-						}
-					}
-			);
+			if (webView instanceof ALR_H40_CordovaWebViewImpl) {
+                ((ALR_H40_CordovaWebViewImpl) webView).setCustomKeyListener(new CustomWebViewKeyListener() {
+                          @Override
+                          public void onKey(KeyEvent event) {
+                              Log.i(TAG, "Calling the onkey event");
+                              doKey(null, -1, event);
+                          }
+                      }
+                );
+            } else {
+                this.currentView = webView.getView();
+                this.currentView.setOnKeyListener(
+                        new View.OnKeyListener(){
+                            @Override
+                            public boolean onKey(View view, int keyCode, KeyEvent event){
+                                //boolean val = super.onKey(view, keyCode, event);
+                                Log.i(TAG, "Calling the onkey event");
+                                return doKey(view, keyCode, event);
+                            }
+                        }
+                );
+            }
 		} catch(Exception e){
 			Log.e(TAG, "Error: "+e);
 		}
@@ -117,13 +128,13 @@ public class Alien extends CordovaPlugin {
 // ####### Key event functions
 
     public boolean doKey(View v, int keyCode, KeyEvent event) {
-
+        int keycode = keyCode > -1 ? keyCode : event.getKeyCode();
         Log.i(TAG, "triggering key event");
         if (event.getAction() == KeyEvent.ACTION_UP) {
-            return KeyUp(keyCode, event);
+            return KeyUp(keycode, event);
         }
         else if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            return KeyDown(keyCode, event);
+            return KeyDown(keycode, event);
         }
         return false;
     }

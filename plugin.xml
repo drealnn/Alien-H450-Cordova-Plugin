@@ -50,7 +50,10 @@
 		<framework src="src/android/libs/alienapi.gradle" custom="true" type="gradleReference" />
         <!--<source-file src="src/android/libs/build-extras.gradle" target-dir="src/.." />-->
 		<resource-file src="src/android/libs/alienapi.aar" target="libs/alienapi.aar" />
-      
+		
+		<resource-file src="src/android/res/raw/fail.wav" target="res/raw/fail.wav" />
+        <resource-file src="src/android/res/raw/success.wav" target="res/raw/success.wav" />
+	    <resource-file src="src/android/res/raw/beep.wav" target="res/raw/beep.wav" />
 
 
     </platform>

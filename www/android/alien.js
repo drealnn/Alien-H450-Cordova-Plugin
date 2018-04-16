@@ -2,7 +2,7 @@ var cordova = require('cordova'),
     exec = require('cordova/exec');
 
 module.exports =  {
-	scanner_handle_keycode : 2,
+	scanner_handle_keycode : 139,
 	onKeyUp : function(successCallback, errorCallback){
 		exec(successCallback, errorCallback, "Alien", 'register_keyUp', []);
 	},
@@ -19,7 +19,7 @@ module.exports =  {
 		exec(successCallback, errorCallback, "Alien", 'getTriggerKeyCode', []);
 	}
 	
-	/*playSound : function(soundName, successCallback, errorCallback){
+	playSound : function(soundName, successCallback, errorCallback){
 		exec(successCallback, errorCallback, "Alien", 'playSound', [soundName]);
-	}*/
+	}
 }
