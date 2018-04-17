@@ -22,8 +22,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.alien.common.KeyCode;
-import com.example.simple.ALR_H40_CordovaWebViewImpl;
-import com.example.simple.CustomWebViewKeyListener;
+import com.filelabel.pro.ALR_H40_CordovaWebViewImpl;
+import com.filelabel.pro.CustomWebViewKeyListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
