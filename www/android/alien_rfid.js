@@ -24,7 +24,7 @@ module.exports =  {
 		exec(successCallback, errorCallback, "Rfid", 'start_readContinuous', []);
 	},
 	start_writeTagMemory : function(format, dataString, successCallback, errorCallback){
-		exec(successCallback, errorCallback, "Rfid", 'start_writeMemory', [format, dataString]);
+		exec(successCallback, errorCallback, "Rfid", 'start_writeMemory', [format, dataString, -1]);
 	},
 	stop_scan :  function(successCallback, errorCallback){
 		exec(successCallback, errorCallback, "Rfid", 'stop_read', []);
