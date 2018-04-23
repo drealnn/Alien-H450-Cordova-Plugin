@@ -87,6 +87,7 @@ public class Barcode extends CordovaPlugin {
 			}
 			
 			mScanner.stop();
+			callbackContext.success("successfully stopped scanner");
 			return true;
 		}
 		else if (action.equalsIgnoreCase("onScan")){
