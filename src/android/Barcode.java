@@ -91,6 +91,7 @@ public class Barcode extends CordovaPlugin {
 		}
 		else if (action.equalsIgnoreCase("onScan")){
 			this.onScan_callback = callbackContext;
+			return true;
 		}
 		return false;
 	}
