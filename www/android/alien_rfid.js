@@ -30,7 +30,7 @@ module.exports =  {
 		exec(successCallback, errorCallback, "Rfid", 'stop_read', []);
 	},
 	isRunning :  function(successCallback, errorCallback){
-		exec(successCallback, errorCallback, "Rfid", 'isRunning', []);
+		exec(successCallback, errorCallback, "Rfid", 'is_running', []);
 	}
 
 
